@@ -1,0 +1,319 @@
+[
+  {
+    "id": "10d2aef0.406f71",
+    "type": "tab",
+    "label": "mijia",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "1327c80c.f44488",
+    "type": "mqtt in",
+    "z": "10d2aef0.406f71",
+    "name": "mijia1 - 58:2D:34:34:70:EC",
+    "topic": "sensors/mijia1",
+    "qos": "2",
+    "datatype": "auto",
+    "broker": "6d5b4d31.ec8ff4",
+    "x": 210,
+    "y": 160,
+    "wires": [
+      [
+        "1c7fd.ad4508035"
+      ]
+    ]
+  },
+  {
+    "id": "1c7fd.ad4508035",
+    "type": "json",
+    "z": "10d2aef0.406f71",
+    "name": "",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 400,
+    "y": 160,
+    "wires": [
+      [
+        "17fdb10e.4c0ddf",
+        "419fd212.9a6b6c"
+      ]
+    ]
+  },
+  {
+    "id": "17fdb10e.4c0ddf",
+    "type": "function",
+    "z": "10d2aef0.406f71",
+    "name": "Domoticz JSON - IDX1 - Mijia Douche",
+    "func": "var idx = 1\nvar TEMP = msg.payload.temperature\nvar HUM = msg.payload.humidity\n\n\nif (HUM < 35) {\n    HUM_STAT = 2 //dry\n} else if (HUM > 65) {\n    HUM_STAT = 3 // wet\n} else if (45 < HUM > 55){\n    HUM_STAT = 1 // Comfortable\n} else {\n    HUM_STAT = 0 //normal\n}\n \n\nvar svalue = String(TEMP +\";\" +HUM +\";\"+HUM_STAT);\n\n\nmsg = {};\npayload = {};\nmsg.payload=payload;\nmsg.payload.idx=Number(idx);\nmsg.payload.nvalue=Number(\"0\"); //always 0\nmsg.payload.svalue=svalue\nmsg.topic=\"\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 680,
+    "y": 160,
+    "wires": [
+      [
+        "8e1d7d20.7cd3e"
+      ]
+    ]
+  },
+  {
+    "id": "6cfd5f5a.22112",
+    "type": "mqtt in",
+    "z": "10d2aef0.406f71",
+    "name": "mijia2 - 58:2D:34:36:B5:72",
+    "topic": "sensors/mijia2",
+    "qos": "2",
+    "datatype": "auto",
+    "broker": "6d5b4d31.ec8ff4",
+    "x": 210,
+    "y": 340,
+    "wires": [
+      [
+        "a29aff4b.53bb9"
+      ]
+    ]
+  },
+  {
+    "id": "a29aff4b.53bb9",
+    "type": "json",
+    "z": "10d2aef0.406f71",
+    "name": "",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 400,
+    "y": 340,
+    "wires": [
+      [
+        "bc7f36e4.756498",
+        "8d2abe24.98145"
+      ]
+    ]
+  },
+  {
+    "id": "bc7f36e4.756498",
+    "type": "function",
+    "z": "10d2aef0.406f71",
+    "name": "Domoticz JSON - IDX32 - Mijia Slaapkamer",
+    "func": "var idx = 32\nvar TEMP = msg.payload.temperature\nvar HUM = msg.payload.humidity\n\n\nif (HUM < 35) {\n    HUM_STAT = 2 //dry\n} else if (HUM > 65) {\n    HUM_STAT = 3 // wet\n} else if (45 < HUM > 55){\n    HUM_STAT = 1 // Comfortable\n} else {\n    HUM_STAT = 0 //normal\n}\n \n\nvar svalue = String(TEMP +\";\" +HUM +\";\"+HUM_STAT);\n\n\nmsg = {};\npayload = {};\nmsg.payload=payload;\nmsg.payload.idx=Number(idx);\nmsg.payload.nvalue=Number(\"0\"); //always 0\nmsg.payload.svalue=svalue\nmsg.topic=\"\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 700,
+    "y": 340,
+    "wires": [
+      [
+        "3250dab6.2616a6"
+      ]
+    ]
+  },
+  {
+    "id": "3d058648.837bda",
+    "type": "mqtt in",
+    "z": "10d2aef0.406f71",
+    "name": "mijia3 - 58:2D:34:34:69:A9",
+    "topic": "sensors/mijia3",
+    "qos": "2",
+    "datatype": "auto",
+    "broker": "6d5b4d31.ec8ff4",
+    "x": 210,
+    "y": 540,
+    "wires": [
+      [
+        "7898b5f4.4bf30c"
+      ]
+    ]
+  },
+  {
+    "id": "7898b5f4.4bf30c",
+    "type": "json",
+    "z": "10d2aef0.406f71",
+    "name": "",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 400,
+    "y": 540,
+    "wires": [
+      [
+        "96dd1ba6.e93868",
+        "761f97bd.634d48"
+      ]
+    ]
+  },
+  {
+    "id": "96dd1ba6.e93868",
+    "type": "function",
+    "z": "10d2aef0.406f71",
+    "name": "Domoticz JSON - IDX31 - Mijia Dustin",
+    "func": "var idx = 31\nvar TEMP = msg.payload.temperature\nvar HUM = msg.payload.humidity\n\n\nif (HUM < 35) {\n    HUM_STAT = 2 //dry\n} else if (HUM > 65) {\n    HUM_STAT = 3 // wet\n} else if (45 < HUM > 55){\n    HUM_STAT = 1 // Comfortable\n} else {\n    HUM_STAT = 0 //normal\n}\n \n\nvar svalue = String(TEMP +\";\" +HUM +\";\"+HUM_STAT);\n\n\nmsg = {};\npayload = {};\nmsg.payload=payload;\nmsg.payload.idx=Number(idx);\nmsg.payload.nvalue=Number(\"0\"); //always 0\nmsg.payload.svalue=svalue\nmsg.topic=\"\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 680,
+    "y": 540,
+    "wires": [
+      [
+        "97f1c657.e08e08"
+      ]
+    ]
+  },
+  {
+    "id": "8e1d7d20.7cd3e",
+    "type": "mqtt out",
+    "z": "10d2aef0.406f71",
+    "name": "domoticz/in",
+    "topic": "domoticz/in",
+    "qos": "",
+    "retain": "",
+    "broker": "6d5b4d31.ec8ff4",
+    "x": 1010,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "3250dab6.2616a6",
+    "type": "mqtt out",
+    "z": "10d2aef0.406f71",
+    "name": "domoticz/in",
+    "topic": "domoticz/in",
+    "qos": "",
+    "retain": "",
+    "broker": "6d5b4d31.ec8ff4",
+    "x": 1010,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "97f1c657.e08e08",
+    "type": "mqtt out",
+    "z": "10d2aef0.406f71",
+    "name": "domoticz/in",
+    "topic": "domoticz/in",
+    "qos": "",
+    "retain": "",
+    "broker": "6d5b4d31.ec8ff4",
+    "x": 1010,
+    "y": 540,
+    "wires": []
+  },
+  {
+    "id": "761f97bd.634d48",
+    "type": "function",
+    "z": "10d2aef0.406f71",
+    "name": "InfluxDB - Mijia3",
+    "func": "var BATT = msg.payload.battery\nvar TEMP = msg.payload.temperature\nvar HUM = msg.payload.humidity\n\nmsg = {};\npayload = {};\nmsg.payload=payload;\nmsg.payload.temperature=Number(TEMP);\nmsg.payload.humidity=Number(HUM);\nmsg.payload.battery=Number(BATT);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 720,
+    "y": 580,
+    "wires": [
+      [
+        "6942bc50.b20a14"
+      ]
+    ]
+  },
+  {
+    "id": "6942bc50.b20a14",
+    "type": "influxdb out",
+    "z": "10d2aef0.406f71",
+    "influxdb": "5a748434.62955c",
+    "name": "mijia3 - InfluxDB",
+    "measurement": "mijia3",
+    "precision": "",
+    "retentionPolicy": "",
+    "x": 1020,
+    "y": 600,
+    "wires": []
+  },
+  {
+    "id": "8d2abe24.98145",
+    "type": "function",
+    "z": "10d2aef0.406f71",
+    "name": "InfluxDB - Mijia2",
+    "func": "var BATT = msg.payload.battery\nvar TEMP = msg.payload.temperature\nvar HUM = msg.payload.humidity\n\nmsg = {};\npayload = {};\nmsg.payload=payload;\nmsg.payload.temperature=Number(TEMP);\nmsg.payload.humidity=Number(HUM);\nmsg.payload.battery=Number(BATT);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 700,
+    "y": 380,
+    "wires": [
+      [
+        "c45b4d18.7b629"
+      ]
+    ]
+  },
+  {
+    "id": "c45b4d18.7b629",
+    "type": "influxdb out",
+    "z": "10d2aef0.406f71",
+    "influxdb": "5a748434.62955c",
+    "name": "mijia2 - InfluxDB",
+    "measurement": "mijia2",
+    "precision": "",
+    "retentionPolicy": "",
+    "x": 1000,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "419fd212.9a6b6c",
+    "type": "function",
+    "z": "10d2aef0.406f71",
+    "name": "InfluxDB - Mijia1",
+    "func": "var BATT = msg.payload.battery\nvar TEMP = msg.payload.temperature\nvar HUM = msg.payload.humidity\n\nmsg = {};\npayload = {};\nmsg.payload=payload;\nmsg.payload.temperature=Number(TEMP);\nmsg.payload.humidity=Number(HUM);\nmsg.payload.battery=Number(BATT);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 700,
+    "y": 200,
+    "wires": [
+      [
+        "8d210212.3e9ed"
+      ]
+    ]
+  },
+  {
+    "id": "8d210212.3e9ed",
+    "type": "influxdb out",
+    "z": "10d2aef0.406f71",
+    "influxdb": "5a748434.62955c",
+    "name": "mijia1 - InfluxDB",
+    "measurement": "mijia1",
+    "precision": "",
+    "retentionPolicy": "",
+    "x": 1000,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "6d5b4d31.ec8ff4",
+    "type": "mqtt-broker",
+    "z": "",
+    "name": "RaspberryPI2",
+    "broker": "192.168.5.30",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": true,
+    "keepalive": "60",
+    "cleansession": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": "",
+    "closeTopic": "",
+    "closeQos": "0",
+    "closePayload": "",
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": ""
+  },
+  {
+    "id": "5a748434.62955c",
+    "type": "influxdb",
+    "z": "",
+    "hostname": "192.168.5.30",
+    "port": "8086",
+    "protocol": "http",
+    "database": "mijia",
+    "name": "",
+    "usetls": false,
+    "tls": ""
+  }
+]
